@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="001902fda26f48d680fe5610aaeff1ad" Name="Diagram1">
+        <EntityTypeShape EntityType="HobbyKlubModel.Location" Width="1.5" PointX="3.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel.Member" Width="1.5" PointX="5.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel.Part" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="HobbyKlubModel.Tool" Width="1.5" PointX="0.75" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="HobbyKlubModel.FK_Location_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="HobbyKlubModel.FK_Location_Tool" ManuallyRouted="false" />
+        <AssociationConnector Association="HobbyKlubModel.FK_Part_Tool" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HobbyKlubModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="HobbyKlubModelStoreContainer">
+          <EntitySet Name="Location" EntityType="HobbyKlubModel.Store.Location" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Member" EntityType="HobbyKlubModel.Store.Member" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Part" EntityType="HobbyKlubModel.Store.Part" store:Type="Tables" store:Schema="dbo" store:Name="Part">
+            <DefiningQuery>SELECT 
+      [Part].[ToolId] AS [ToolId], 
+      [Part].[PartNo] AS [PartNo], 
+      [Part].[Description] AS [Description], 
+      [Part].[Active] AS [Active]
+      FROM [dbo].[Part] AS [Part]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sysdiagrams" EntityType="HobbyKlubModel.Store.sysdiagrams" store:Type="Tables" store:Schema="dbo" store:Name="sysdiagrams">
+            <DefiningQuery>SELECT 
+      [sysdiagrams].[name] AS [name], 
+      [sysdiagrams].[principal_id] AS [principal_id], 
+      [sysdiagrams].[diagram_id] AS [diagram_id], 
+      [sysdiagrams].[version] AS [version], 
+      [sysdiagrams].[definition] AS [definition]
+      FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tool" EntityType="HobbyKlubModel.Store.Tool" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Location_Member" Association="HobbyKlubModel.Store.FK_Location_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Tool" Association="HobbyKlubModel.Store.FK_Location_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Part_Tool" Association="HobbyKlubModel.Store.FK_Part_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="Part" EntitySet="Part" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocID" />
+          </Key>
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="ToolId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="LocID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneMobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email1" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoenNumber" Type="int" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="int" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PhoneWork" Type="nvarchar" MaxLength="20" />
+          <Property Name="PhoneHome" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Permissions" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Picture" Type="image" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'HobbyKlub.dbo.Part' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Part">
+          <Key>
+            <PropertyRef Name="ToolId" />
+            <PropertyRef Name="PartNo" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Active" />
+          </Key>
+          <Property Name="ToolId" Type="int" Nullable="false" />
+          <Property Name="PartNo" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'HobbyKlub.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tool">
+          <Key>
+            <PropertyRef Name="ToolId" />
+          </Key>
+          <Property Name="ToolId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Picture" Type="image" />
+          <Property Name="Link" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="text" />
+          <Property Name="K_number" Type="int" Nullable="false" />
+          <Property Name="Art" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Value" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Location_Member">
+          <End Role="Member" Type="HobbyKlubModel.Store.Member" Multiplicity="1" />
+          <End Role="Location" Type="HobbyKlubModel.Store.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Tool">
+          <End Role="Tool" Type="HobbyKlubModel.Store.Tool" Multiplicity="1" />
+          <End Role="Location" Type="HobbyKlubModel.Store.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ToolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Part_Tool">
+          <End Role="Tool" Type="HobbyKlubModel.Store.Tool" Multiplicity="1" />
+          <End Role="Part" Type="HobbyKlubModel.Store.Part" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolId" />
+            </Principal>
+            <Dependent Role="Part">
+              <PropertyRef Name="ToolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HobbyKlubModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="HobbyKlub_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Location" EntityType="HobbyKlubModel.Location" />
+          <EntitySet Name="Member" EntityType="HobbyKlubModel.Member" />
+          <EntitySet Name="Part" EntityType="HobbyKlubModel.Part" />
+          <EntitySet Name="sysdiagrams" EntityType="HobbyKlubModel.sysdiagrams" />
+          <EntitySet Name="Tool" EntityType="HobbyKlubModel.Tool" />
+          <AssociationSet Name="FK_Location_Member" Association="HobbyKlubModel.FK_Location_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Tool" Association="HobbyKlubModel.FK_Location_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Part_Tool" Association="HobbyKlubModel.FK_Part_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="Part" EntitySet="Part" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocID" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="ToolId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="LocID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Member" Relationship="HobbyKlubModel.FK_Location_Member" FromRole="Location" ToRole="Member" />
+          <NavigationProperty Name="Tool" Relationship="HobbyKlubModel.FK_Location_Tool" FromRole="Location" ToRole="Tool" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneMobile" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Email1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LoenNumber" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Zip" Type="Int32" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneWork" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneHome" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Email2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Permissions" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Location" Relationship="HobbyKlubModel.FK_Location_Member" FromRole="Member" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Part">
+          <Key>
+            <PropertyRef Name="ToolId" />
+            <PropertyRef Name="PartNo" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Active" />
+          </Key>
+          <Property Name="ToolId" Type="Int32" Nullable="false" />
+          <Property Name="PartNo" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tool" Relationship="HobbyKlubModel.FK_Part_Tool" FromRole="Part" ToRole="Tool" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tool">
+          <Key>
+            <PropertyRef Name="ToolId" />
+          </Key>
+          <Property Name="ToolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Link" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="K_number" Type="Int32" Nullable="false" />
+          <Property Name="Art" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Value" Type="Int32" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="HobbyKlubModel.FK_Location_Tool" FromRole="Tool" ToRole="Location" />
+          <NavigationProperty Name="Part" Relationship="HobbyKlubModel.FK_Part_Tool" FromRole="Tool" ToRole="Part" />
+        </EntityType>
+        <Association Name="FK_Location_Member">
+          <End Role="Member" Type="HobbyKlubModel.Member" Multiplicity="1" />
+          <End Role="Location" Type="HobbyKlubModel.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Tool">
+          <End Role="Tool" Type="HobbyKlubModel.Tool" Multiplicity="1" />
+          <End Role="Location" Type="HobbyKlubModel.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ToolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Part_Tool">
+          <End Role="Tool" Type="HobbyKlubModel.Tool" Multiplicity="1" />
+          <End Role="Part" Type="HobbyKlubModel.Part" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolId" />
+            </Principal>
+            <Dependent Role="Part">
+              <PropertyRef Name="ToolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HobbyKlubModelStoreContainer" CdmEntityContainer="HobbyKlub_Entities">
+          <EntitySetMapping Name="Location">
+            <EntityTypeMapping TypeName="HobbyKlubModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="ToolId" ColumnName="ToolId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LocID" ColumnName="LocID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="HobbyKlubModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneMobile" ColumnName="PhoneMobile" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="LoenNumber" ColumnName="LoenNumber" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PhoneWork" ColumnName="PhoneWork" />
+                <ScalarProperty Name="PhoneHome" ColumnName="PhoneHome" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Permissions" ColumnName="Permissions" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Part">
+            <EntityTypeMapping TypeName="HobbyKlubModel.Part">
+              <MappingFragment StoreEntitySet="Part">
+                <ScalarProperty Name="ToolId" ColumnName="ToolId" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HobbyKlubModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tool">
+            <EntityTypeMapping TypeName="HobbyKlubModel.Tool">
+              <MappingFragment StoreEntitySet="Tool">
+                <ScalarProperty Name="ToolId" ColumnName="ToolId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="K_number" ColumnName="K_number" />
+                <ScalarProperty Name="Art" ColumnName="Art" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

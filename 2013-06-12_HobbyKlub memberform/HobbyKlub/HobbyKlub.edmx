@@ -386,6 +386,32 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams>
+      <Diagram Name="HobbyKlub">
+        <EntityTypeShape EntityType="HobbyKlubModel.Location" Width="1.5" PointX="3" PointY="2.5" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel.Member" Width="1.5" PointX="0.75" PointY="6.625" Height="4.2879036458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel.Part" Width="1.5" PointX="3" PointY="6" Height="1.9802864583333344" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel.Tool" Width="1.5" PointX="0.75" PointY="2.125" Height="3.3263964843749996" IsExpanded="true" />
+        <AssociationConnector Association="HobbyKlubModel.FK_Location_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.625" />
+          <ConnectorPoint PointX="2.625" PointY="6.25" />
+          <ConnectorPoint PointX="2.625" PointY="3.7785953776041667" />
+          <ConnectorPoint PointX="3" PointY="3.7785953776041667" />
+        </AssociationConnector>
+        <AssociationConnector Association="HobbyKlubModel.FK_Location_Tool" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.0767976888020834" />
+          <ConnectorPoint PointX="3" PointY="3.0767976888020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="HobbyKlubModel.FK_Part_Tool" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.3890877920673068" />
+          <ConnectorPoint PointX="2.5660744349011213" PointY="5.7051622269684277" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="5.823013357166186" />
+          <ConnectorPoint PointX="2.8125" PointY="5.9515877920673068" />
+          <ConnectorPoint PointX="2.8125" PointY="5.8125" />
+          <ConnectorPoint PointX="3" PointY="6" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
   </Designer>
 </edmx:Edmx>

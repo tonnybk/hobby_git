@@ -48,6 +48,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>HobbyKlub.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
@@ -99,6 +102,18 @@
     <Compile Include="Part.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Reservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservation.Designer.cs">
+      <DependentUpon>Reservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Retur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Retur.Designer.cs">
+      <DependentUpon>Retur.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,8 +146,20 @@
     <Compile Include="Tools.designer.cs">
       <DependentUpon>Tools.cs</DependentUpon>
     </Compile>
+    <Compile Include="Udlejning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Udlejning.Designer.cs">
+      <DependentUpon>Udlejning.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MemberDropDown.resx">
       <DependentUpon>MemberDropDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation.resx">
+      <DependentUpon>Reservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Retur.resx">
+      <DependentUpon>Retur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectForm.resx">
       <DependentUpon>SelectForm.cs</DependentUpon>
@@ -154,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools.resx">
       <DependentUpon>Tools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Udlejning.resx">
+      <DependentUpon>Udlejning.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config">
       <SubType>Designer</SubType>

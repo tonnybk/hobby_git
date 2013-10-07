@@ -65,5 +65,43 @@ namespace HobbyKlub
             ToolForm myToolForm = new ToolForm(toolCombo.SelectedTool);
             myToolForm.ShowDialog();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ToolForm MyDialog = new ToolForm(null);
+            MyDialog.ShowDialog();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Reservation MyDialog = new Reservation(memberDropDown1.SelectedMember);
+            MyDialog.ShowDialog();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Udlejning MyDialog = new Udlejning(memberDropDown1.SelectedMember);
+            MyDialog.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Retur MyDialog = new Retur(memberDropDown1.SelectedMember);
+            MyDialog.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MemberForm MyDialog = new MemberForm(memberDropDown1.SelectedMember);
+            MyDialog.ShowDialog();
+        }
+
+        private void memberDropDown1_OnMemberSelected_1(Member obj)
+        {
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+        }
     }
 }

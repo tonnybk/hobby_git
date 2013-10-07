@@ -40,7 +40,10 @@ namespace HobbyKlub
         {
             get
             {
-                return members[comboBox1.SelectedIndex];
+                if (comboBox1.SelectedIndex >= 0)
+                    return members[comboBox1.SelectedIndex];
+                else
+                    return null;
             }
         }
 

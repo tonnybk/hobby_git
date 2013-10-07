@@ -26,8 +26,11 @@ namespace HobbyKlub
 
         private void ToolForm_Load(object sender, EventArgs e)
         {
-            tbxName.Text = tool.Name;
-            checkBox1.Checked = tool.Active;
+            if (tool != null)
+            {
+                tbxName.Text = tool.Name;
+                checkBox1.Checked = tool.Active;
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

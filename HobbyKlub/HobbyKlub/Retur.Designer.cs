@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.memberDropDown2 = new HobbyKlub.MemberDropDown();
@@ -40,24 +38,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tools1 = new HobbyKlub.Tools();
             this.SuspendLayout();
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Udlejning";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(170, 110);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(272, 21);
-            this.comboBox1.TabIndex = 24;
             // 
             // label1
             // 
@@ -122,11 +105,11 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(453, 110);
+            this.label3.Location = new System.Drawing.Point(436, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 49);
+            this.label3.Size = new System.Drawing.Size(203, 49);
             this.label3.TabIndex = 35;
-            this.label3.Text = "(Viser alle udlejninger fra den aktuelle kunde, inklusive værktøj og start dato)";
+            this.label3.Text = "(Viser kun de udlejede værktøjer fra den aktuelle kunde)";
             // 
             // textBox1
             // 
@@ -145,11 +128,28 @@
             this.label4.TabIndex = 36;
             this.label4.Text = "Member";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(65, 110);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Værktøj";
+            // 
+            // tools1
+            // 
+            this.tools1.Location = new System.Drawing.Point(170, 110);
+            this.tools1.Name = "tools1";
+            this.tools1.Size = new System.Drawing.Size(243, 22);
+            this.tools1.TabIndex = 38;
+            // 
             // Retur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 371);
+            this.Controls.Add(this.tools1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -159,7 +159,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.memberDropDown2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "Retur";
@@ -171,8 +170,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private MemberDropDown memberDropDown2;
@@ -183,5 +180,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private Tools tools1;
     }
 }

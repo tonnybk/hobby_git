@@ -13,6 +13,8 @@ namespace HobbyKlub
 {
     public partial class SelectForm : Form
     {
+        private DataSet MyLocations;
+
         public SelectForm()
         {
             InitializeComponent();
@@ -38,7 +40,6 @@ namespace HobbyKlub
 
         private void memberDropDown1_OnMemberSelected(Member obj)
         {
-            editButton.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -99,9 +100,43 @@ namespace HobbyKlub
 
         private void memberDropDown1_OnMemberSelected_1(Member obj)
         {
+            LoadLocations();
             button2.Enabled = true;
             button3.Enabled = true;
             button4.Enabled = true;
         }
+
+
+
+        private void LoadLocations()
+        {
+            List<Location> locationList;
+
+            using (var db = new HobbyKlub_Entities())
+            {
+                if (memberDropDown1.SelectedMember != null)
+                {
+                    var rv = db.Location.Where(x => x.MemberId == memberDropDown1.SelectedMember.MemberId);
+                    //available.TraceQuery();
+                    locationList = rv.ToList();
+                }
+                else
+                {
+                    var rv = db.Location.Where(x => x.MemberId > 0);
+                    //available.TraceQuery();
+                    locationList = rv.ToList();
+                }
+
+                listBox1.Items.Clear();
+                listBox1.Items.AddRange(locationList.Select(x => x.LocID.ToString() + "\t" + x.StartDate.ToString() + "\t" + x.Tool.Name + "\t" + x.Member.Name).ToArray());
+            }            
+
+
+        }
+        private void SelectForm_Load(object sender, EventArgs e)
+        {
+            LoadLocations();
+        }
+
     }
 }

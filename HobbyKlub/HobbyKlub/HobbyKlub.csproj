@@ -207,6 +207,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HobbyKlubEntities.datasource" />
+    <None Include="Properties\DataSources\Location.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -250,6 +251,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="History.txt" />
     <Content Include="HobbyKlub.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -36,10 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tools1 = new HobbyKlub.Tools();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -112,39 +109,14 @@
             this.tools1.Size = new System.Drawing.Size(243, 22);
             this.tools1.TabIndex = 13;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 114);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Reservation";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(137, 114);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(272, 21);
-            this.comboBox1.TabIndex = 16;
-            // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(415, 117);
+            this.label3.Location = new System.Drawing.Point(137, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 38);
+            this.label3.Size = new System.Drawing.Size(464, 23);
             this.label3.TabIndex = 33;
-            this.label3.Text = "(Viser alle reserv. fra den aktuelle kunde og det aktuelle værktøj)";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(134, 98);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
-            this.label6.TabIndex = 34;
-            this.label6.Text = "eller";
+            this.label3.Text = "Hvis der existerer en reservation til tilsvarende værktøj, så bliver den ændret t" +
+    "il en udlejning.";
             // 
             // textBox1
             // 
@@ -170,10 +142,7 @@
             this.ClientSize = new System.Drawing.Size(629, 369);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tools1);
             this.Controls.Add(this.button2);
@@ -199,10 +168,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private Tools tools1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
     }

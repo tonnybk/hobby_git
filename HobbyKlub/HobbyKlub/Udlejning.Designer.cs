@@ -35,10 +35,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.tools1 = new HobbyKlub.Tools();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.tools1 = new HobbyKlub.Tools();
             this.SuspendLayout();
             // 
             // button1
@@ -50,6 +50,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dateTimePicker1
             // 
@@ -102,13 +103,6 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Værktøj";
             // 
-            // tools1
-            // 
-            this.tools1.Location = new System.Drawing.Point(137, 74);
-            this.tools1.Name = "tools1";
-            this.tools1.Size = new System.Drawing.Size(243, 22);
-            this.tools1.TabIndex = 13;
-            // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(137, 117);
@@ -135,6 +129,14 @@
             this.label8.TabIndex = 35;
             this.label8.Text = "Member";
             // 
+            // tools1
+            // 
+            this.tools1.Location = new System.Drawing.Point(137, 74);
+            this.tools1.Name = "tools1";
+            this.tools1.Size = new System.Drawing.Size(243, 22);
+            this.tools1.TabIndex = 13;
+            this.tools1.OnToolSelected += new System.Action<HobbyKlub.Tool>(this.tools1_OnToolSelected);
+            // 
             // Udlejning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +155,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Udlejning";
             this.Text = "Udlejning";
+            this.Load += new System.EventHandler(this.Udlejning_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

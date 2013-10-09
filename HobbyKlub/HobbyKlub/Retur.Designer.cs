@@ -102,12 +102,13 @@
             this.button1.TabIndex = 33;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(436, 110);
+            this.label3.Location = new System.Drawing.Point(419, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(203, 49);
+            this.label3.Size = new System.Drawing.Size(203, 37);
             this.label3.TabIndex = 35;
             this.label3.Text = "(Viser kun de udlejede værktøjer fra den aktuelle kunde)";
             // 
@@ -143,6 +144,7 @@
             this.tools1.Name = "tools1";
             this.tools1.Size = new System.Drawing.Size(243, 22);
             this.tools1.TabIndex = 38;
+            this.tools1.OnToolSelected += new System.Action<HobbyKlub.Tool>(this.tools1_OnToolSelected);
             // 
             // Retur
             // 
@@ -163,6 +165,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "Retur";
             this.Text = "Retur";
+            this.Load += new System.EventHandler(this.Retur_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

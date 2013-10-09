@@ -21,7 +21,7 @@ namespace HobbyKlub
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            using (var db = new HobbyKlub_Entities())
+            using (var db = new HobbyKlubEntities1())
             {
                 if (member != null)
                 {
@@ -30,7 +30,7 @@ namespace HobbyKlub
                 else
                 {
                     member = new Member();
-                    db.Member.Add(member);
+                    db.Member.AddObject(member);
                 }
 
                 member.Address = address.Text;

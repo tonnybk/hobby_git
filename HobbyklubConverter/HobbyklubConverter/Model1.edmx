@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Hobbyklub2Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Hobbyklub2ModelStoreContainer">
+          <EntitySet Name="LOGIN_OUT" EntityType="Hobbyklub2Model.Store.LOGIN_OUT" store:Type="Tables" store:Schema="dbo" store:Name="LOGIN_OUT">
+            <DefiningQuery>SELECT 
+      [LOGIN_OUT].[OPERATOR] AS [OPERATOR], 
+      [LOGIN_OUT].[LOGIN_DATO_TID] AS [LOGIN_DATO_TID], 
+      [LOGIN_OUT].[LOGOUT_DATO_TID] AS [LOGOUT_DATO_TID]
+      FROM [dbo].[LOGIN_OUT] AS [LOGIN_OUT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RESERVATION" EntityType="Hobbyklub2Model.Store.RESERVATION" store:Type="Tables" store:Schema="dbo" store:Name="RESERVATION">
+            <DefiningQuery>SELECT 
+      [RESERVATION].[LOENNUMMER] AS [LOENNUMMER], 
+      [RESERVATION].[K_NUMMER] AS [K_NUMMER], 
+      [RESERVATION].[STARTDATO] AS [STARTDATO], 
+      [RESERVATION].[SLUTDATO] AS [SLUTDATO], 
+      [RESERVATION].[OPERATOR] AS [OPERATOR], 
+      [RESERVATION].[OPERATION_DATO] AS [OPERATION_DATO]
+      FROM [dbo].[RESERVATION] AS [RESERVATION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sysdiagrams" EntityType="Hobbyklub2Model.Store.sysdiagrams" store:Type="Tables" store:Schema="dbo" store:Name="sysdiagrams">
+            <DefiningQuery>SELECT 
+      [sysdiagrams].[name] AS [name], 
+      [sysdiagrams].[principal_id] AS [principal_id], 
+      [sysdiagrams].[diagram_id] AS [diagram_id], 
+      [sysdiagrams].[version] AS [version], 
+      [sysdiagrams].[definition] AS [definition]
+      FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UDLAAN" EntityType="Hobbyklub2Model.Store.UDLAAN" store:Type="Tables" store:Schema="dbo" store:Name="UDLAAN">
+            <DefiningQuery>SELECT 
+      [UDLAAN].[LOENNUMMER] AS [LOENNUMMER], 
+      [UDLAAN].[K_NUMMER] AS [K_NUMMER], 
+      [UDLAAN].[STARTDATO] AS [STARTDATO], 
+      [UDLAAN].[SLUTDATO] AS [SLUTDATO], 
+      [UDLAAN].[OPERATOR] AS [OPERATOR], 
+      [UDLAAN].[OPERATION_DATO] AS [OPERATION_DATO]
+      FROM [dbo].[UDLAAN] AS [UDLAAN]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VAERKTOJ" EntityType="Hobbyklub2Model.Store.VAERKTOJ" store:Type="Tables" store:Schema="dbo" store:Name="VAERKTOJ">
+            <DefiningQuery>SELECT 
+      [VAERKTOJ].[BESKRIV] AS [BESKRIV], 
+      [VAERKTOJ].[K_NUMMER] AS [K_NUMMER], 
+      [VAERKTOJ].[ANTAL_DELE] AS [ANTAL_DELE], 
+      [VAERKTOJ].[DEL1] AS [DEL1], 
+      [VAERKTOJ].[DEL2] AS [DEL2], 
+      [VAERKTOJ].[DEL3] AS [DEL3], 
+      [VAERKTOJ].[DEL4] AS [DEL4], 
+      [VAERKTOJ].[DEL5] AS [DEL5], 
+      [VAERKTOJ].[DEL6] AS [DEL6], 
+      [VAERKTOJ].[DEL7] AS [DEL7], 
+      [VAERKTOJ].[PRIS] AS [PRIS], 
+      [VAERKTOJ].[FEJLDATO] AS [FEJLDATO], 
+      [VAERKTOJ].[FEJLBESKRIVELSE] AS [FEJLBESKRIVELSE], 
+      [VAERKTOJ].[OKDATO] AS [OKDATO], 
+      [VAERKTOJ].[REPPRIS] AS [REPPRIS], 
+      [VAERKTOJ].[DOK] AS [DOK], 
+      [VAERKTOJ].[BRUGERDOK] AS [BRUGERDOK], 
+      [VAERKTOJ].[upsize_ts] AS [upsize_ts], 
+      [VAERKTOJ].[BILLEDE] AS [BILLEDE]
+      FROM [dbo].[VAERKTOJ] AS [VAERKTOJ]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Hobbyklub2.dbo.LOGIN_OUT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="LOGIN_OUT">
+          <Key>
+            <PropertyRef Name="OPERATOR" />
+          </Key>
+          <Property Name="OPERATOR" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LOGIN_DATO_TID" Type="datetime" />
+          <Property Name="LOGOUT_DATO_TID" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Hobbyklub2.dbo.RESERVATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="K_NUMMER" />
+          </Key>
+          <Property Name="LOENNUMMER" Type="int" />
+          <Property Name="K_NUMMER" Type="int" Nullable="false" />
+          <Property Name="STARTDATO" Type="datetime" />
+          <Property Name="SLUTDATO" Type="datetime" />
+          <Property Name="OPERATOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="OPERATION_DATO" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Hobbyklub2.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Hobbyklub2.dbo.UDLAAN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="UDLAAN">
+          <Key>
+            <PropertyRef Name="K_NUMMER" />
+          </Key>
+          <Property Name="LOENNUMMER" Type="int" />
+          <Property Name="K_NUMMER" Type="int" Nullable="false" />
+          <Property Name="STARTDATO" Type="datetime" />
+          <Property Name="SLUTDATO" Type="datetime" />
+          <Property Name="OPERATOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="OPERATION_DATO" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Hobbyklub2.dbo.VAERKTOJ' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="VAERKTOJ">
+          <Key>
+            <PropertyRef Name="K_NUMMER" />
+            <PropertyRef Name="upsize_ts" />
+          </Key>
+          <Property Name="BESKRIV" Type="nvarchar" MaxLength="67" />
+          <Property Name="K_NUMMER" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="ANTAL_DELE" Type="nvarchar" MaxLength="3" />
+          <Property Name="DEL1" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEL2" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEL3" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEL4" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEL5" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEL6" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEL7" Type="nvarchar" MaxLength="25" />
+          <Property Name="PRIS" Type="float" />
+          <Property Name="FEJLDATO" Type="nvarchar" MaxLength="50" />
+          <Property Name="FEJLBESKRIVELSE" Type="nvarchar" MaxLength="50" />
+          <Property Name="OKDATO" Type="datetime" />
+          <Property Name="REPPRIS" Type="int" />
+          <Property Name="DOK" Type="nvarchar" MaxLength="50" />
+          <Property Name="BRUGERDOK" Type="nvarchar" MaxLength="50" />
+          <Property Name="upsize_ts" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="BILLEDE" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'Hobbyklub2.dbo.MEDLEM' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="MEDLEM">
+        <Property Name="LON_NUMMER" Type="int" />
+        <Property Name="NAVN" Type="nvarchar" MaxLength="24" />
+        <Property Name="AFDELING" Type="nvarchar" MaxLength="10" />
+        <Property Name="ADRESSE" Type="nvarchar" MaxLength="25" />
+        <Property Name="POSTNUMMER" Type="int" />
+        <Property Name="BY" Type="nvarchar" MaxLength="16" />
+        <Property Name="TELEFON" Type="nvarchar" MaxLength="9" />
+        <Property Name="LOKAL_TLF" Type="nvarchar" MaxLength="50" />
+        <Property Name="INIT" Type="nvarchar" MaxLength="7" />
+        <Property Name="MAILADRESSE" Type="nvarchar" MaxLength="50" />
+        <Property Name="FLYTTEDATO" Type="datetime" />
+        <Property Name="ADRESSE1" Type="nvarchar" MaxLength="50" />
+        <Property Name="POSTNUMMER1" Type="int" />
+        <Property Name="BY1" Type="nvarchar" MaxLength="50" />
+        <Property Name="TELEFON1" Type="nvarchar" MaxLength="50" />
+        <Property Name="LOKAL_TLF1" Type="nvarchar" MaxLength="50" />
+        <Property Name="FLYTTEDATO2" Type="datetime" />
+        <Property Name="ADRESSE2" Type="nvarchar" MaxLength="50" />
+        <Property Name="POSTNUMMER2" Type="int" />
+        <Property Name="BY2" Type="nvarchar" MaxLength="50" />
+        <Property Name="TELEFON2" Type="nvarchar" MaxLength="50" />
+        <Property Name="LOKAL_TLF2" Type="nvarchar" MaxLength="50" />
+        <Property Name="brugertype" Type="nchar" MaxLength="10" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Hobbyklub2Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Hobbyklub2Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LOGIN_OUT" EntityType="Hobbyklub2Model.LOGIN_OUT" />
+          <EntitySet Name="RESERVATION" EntityType="Hobbyklub2Model.RESERVATION" />
+          <EntitySet Name="sysdiagrams" EntityType="Hobbyklub2Model.sysdiagrams" />
+          <EntitySet Name="UDLAAN" EntityType="Hobbyklub2Model.UDLAAN" />
+          <EntitySet Name="VAERKTOJ" EntityType="Hobbyklub2Model.VAERKTOJ" />
+        </EntityContainer>
+        <EntityType Name="LOGIN_OUT">
+          <Key>
+            <PropertyRef Name="OPERATOR" />
+          </Key>
+          <Property Name="OPERATOR" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LOGIN_DATO_TID" Type="DateTime" />
+          <Property Name="LOGOUT_DATO_TID" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="K_NUMMER" />
+          </Key>
+          <Property Name="LOENNUMMER" Type="Int32" />
+          <Property Name="K_NUMMER" Type="Int32" Nullable="false" />
+          <Property Name="STARTDATO" Type="DateTime" />
+          <Property Name="SLUTDATO" Type="DateTime" />
+          <Property Name="OPERATOR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="OPERATION_DATO" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UDLAAN">
+          <Key>
+            <PropertyRef Name="K_NUMMER" />
+          </Key>
+          <Property Name="LOENNUMMER" Type="Int32" />
+          <Property Name="K_NUMMER" Type="Int32" Nullable="false" />
+          <Property Name="STARTDATO" Type="DateTime" />
+          <Property Name="SLUTDATO" Type="DateTime" />
+          <Property Name="OPERATOR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="OPERATION_DATO" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="VAERKTOJ">
+          <Key>
+            <PropertyRef Name="K_NUMMER" />
+            <PropertyRef Name="upsize_ts" />
+          </Key>
+          <Property Name="BESKRIV" Type="String" MaxLength="67" Unicode="true" FixedLength="false" />
+          <Property Name="K_NUMMER" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="ANTAL_DELE" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="DEL1" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="DEL2" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="DEL3" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="DEL4" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="DEL5" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="DEL6" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="DEL7" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="PRIS" Type="Double" />
+          <Property Name="FEJLDATO" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FEJLBESKRIVELSE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="OKDATO" Type="DateTime" />
+          <Property Name="REPPRIS" Type="Int32" />
+          <Property Name="DOK" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BRUGERDOK" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="upsize_ts" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="BILLEDE" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Hobbyklub2ModelStoreContainer" CdmEntityContainer="Hobbyklub2Entities1">
+          <EntitySetMapping Name="LOGIN_OUT">
+            <EntityTypeMapping TypeName="Hobbyklub2Model.LOGIN_OUT">
+              <MappingFragment StoreEntitySet="LOGIN_OUT">
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="LOGIN_DATO_TID" ColumnName="LOGIN_DATO_TID" />
+                <ScalarProperty Name="LOGOUT_DATO_TID" ColumnName="LOGOUT_DATO_TID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVATION">
+            <EntityTypeMapping TypeName="Hobbyklub2Model.RESERVATION">
+              <MappingFragment StoreEntitySet="RESERVATION">
+                <ScalarProperty Name="LOENNUMMER" ColumnName="LOENNUMMER" />
+                <ScalarProperty Name="K_NUMMER" ColumnName="K_NUMMER" />
+                <ScalarProperty Name="STARTDATO" ColumnName="STARTDATO" />
+                <ScalarProperty Name="SLUTDATO" ColumnName="SLUTDATO" />
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="OPERATION_DATO" ColumnName="OPERATION_DATO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Hobbyklub2Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UDLAAN">
+            <EntityTypeMapping TypeName="Hobbyklub2Model.UDLAAN">
+              <MappingFragment StoreEntitySet="UDLAAN">
+                <ScalarProperty Name="LOENNUMMER" ColumnName="LOENNUMMER" />
+                <ScalarProperty Name="K_NUMMER" ColumnName="K_NUMMER" />
+                <ScalarProperty Name="STARTDATO" ColumnName="STARTDATO" />
+                <ScalarProperty Name="SLUTDATO" ColumnName="SLUTDATO" />
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="OPERATION_DATO" ColumnName="OPERATION_DATO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAERKTOJ">
+            <EntityTypeMapping TypeName="Hobbyklub2Model.VAERKTOJ">
+              <MappingFragment StoreEntitySet="VAERKTOJ">
+                <ScalarProperty Name="BESKRIV" ColumnName="BESKRIV" />
+                <ScalarProperty Name="K_NUMMER" ColumnName="K_NUMMER" />
+                <ScalarProperty Name="ANTAL_DELE" ColumnName="ANTAL_DELE" />
+                <ScalarProperty Name="DEL1" ColumnName="DEL1" />
+                <ScalarProperty Name="DEL2" ColumnName="DEL2" />
+                <ScalarProperty Name="DEL3" ColumnName="DEL3" />
+                <ScalarProperty Name="DEL4" ColumnName="DEL4" />
+                <ScalarProperty Name="DEL5" ColumnName="DEL5" />
+                <ScalarProperty Name="DEL6" ColumnName="DEL6" />
+                <ScalarProperty Name="DEL7" ColumnName="DEL7" />
+                <ScalarProperty Name="PRIS" ColumnName="PRIS" />
+                <ScalarProperty Name="FEJLDATO" ColumnName="FEJLDATO" />
+                <ScalarProperty Name="FEJLBESKRIVELSE" ColumnName="FEJLBESKRIVELSE" />
+                <ScalarProperty Name="OKDATO" ColumnName="OKDATO" />
+                <ScalarProperty Name="REPPRIS" ColumnName="REPPRIS" />
+                <ScalarProperty Name="DOK" ColumnName="DOK" />
+                <ScalarProperty Name="BRUGERDOK" ColumnName="BRUGERDOK" />
+                <ScalarProperty Name="upsize_ts" ColumnName="upsize_ts" />
+                <ScalarProperty Name="BILLEDE" ColumnName="BILLEDE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="Hobbyklub2Model.LOGIN_OUT" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hobbyklub2Model.RESERVATION" Width="1.5" PointX="2.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hobbyklub2Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" Height="1.9802864583333322" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hobbyklub2Model.UDLAAN" Width="1.5" PointX="2.75" PointY="3.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hobbyklub2Model.VAERKTOJ" Width="1.5" PointX="4.75" PointY="0.75" Height="4.6725065104166665" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

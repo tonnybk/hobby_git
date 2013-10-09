@@ -4,19 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HobbyKlubModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="HobbyKlubModelStoreContainer">
-          <EntitySet Name="Location" EntityType="HobbyKlubModel.Store.Location" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Member" EntityType="HobbyKlubModel.Store.Member" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Part" EntityType="HobbyKlubModel.Store.Part" store:Type="Tables" store:Schema="dbo" store:Name="Part">
-            <DefiningQuery>SELECT 
-      [Part].[ToolId] AS [ToolId], 
-      [Part].[PartNo] AS [PartNo], 
-      [Part].[Description] AS [Description], 
-      [Part].[Active] AS [Active]
-      FROM [dbo].[Part] AS [Part]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="sysdiagrams" EntityType="HobbyKlubModel.Store.sysdiagrams" store:Type="Tables" store:Schema="dbo" store:Name="sysdiagrams">
+      <Schema Namespace="HobbyKlubModel1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="HobbyKlubModel1StoreContainer">
+          <EntitySet Name="Location" EntityType="HobbyKlubModel1.Store.Location" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Member" EntityType="HobbyKlubModel1.Store.Member" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Part" EntityType="HobbyKlubModel1.Store.Part" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="HobbyKlubModel1.Store.sysdiagrams" store:Type="Tables" store:Schema="dbo" store:Name="sysdiagrams">
             <DefiningQuery>SELECT 
       [sysdiagrams].[name] AS [name], 
       [sysdiagrams].[principal_id] AS [principal_id], 
@@ -25,18 +18,10 @@
       [sysdiagrams].[definition] AS [definition]
       FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Tool" EntityType="HobbyKlubModel.Store.Tool" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Location_Member" Association="HobbyKlubModel.Store.FK_Location_Member">
+          <EntitySet Name="Tool" EntityType="HobbyKlubModel1.Store.Tool" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Location_Member" Association="HobbyKlubModel1.Store.FK_Location_Member">
             <End Role="Member" EntitySet="Member" />
             <End Role="Location" EntitySet="Location" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Location_Tool" Association="HobbyKlubModel.Store.FK_Location_Tool">
-            <End Role="Tool" EntitySet="Tool" />
-            <End Role="Location" EntitySet="Location" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Part_Tool" Association="HobbyKlubModel.Store.FK_Part_Tool">
-            <End Role="Tool" EntitySet="Tool" />
-            <End Role="Part" EntitySet="Part" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Location">
@@ -62,29 +47,24 @@
           <Property Name="LoenNumber" Type="int" />
           <Property Name="City" Type="nvarchar" MaxLength="50" />
           <Property Name="Zip" Type="int" />
-          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="PhoneWork" Type="nvarchar" MaxLength="20" />
           <Property Name="PhoneHome" Type="nvarchar" MaxLength="20" />
           <Property Name="Email2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Permissions" Type="int" Nullable="false" />
-          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Permissions" Type="int" />
+          <Property Name="Active" Type="bit" />
           <Property Name="Picture" Type="image" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'HobbyKlub.dbo.Part' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="Part">
           <Key>
-            <PropertyRef Name="ToolId" />
-            <PropertyRef Name="PartNo" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="Active" />
+            <PropertyRef Name="PartID" />
           </Key>
           <Property Name="ToolId" Type="int" Nullable="false" />
           <Property Name="PartNo" Type="int" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="PartID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'HobbyKlub.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -105,20 +85,20 @@
           <Key>
             <PropertyRef Name="ToolId" />
           </Key>
-          <Property Name="ToolId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ToolId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Picture" Type="image" />
           <Property Name="Link" Type="nvarchar" MaxLength="200" />
           <Property Name="Description" Type="text" />
           <Property Name="K_number" Type="int" Nullable="false" />
-          <Property Name="Art" Type="int" Nullable="false" />
+          <Property Name="Art" Type="int" />
           <Property Name="Price" Type="int" />
           <Property Name="Value" Type="int" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Location_Member">
-          <End Role="Member" Type="HobbyKlubModel.Store.Member" Multiplicity="1" />
-          <End Role="Location" Type="HobbyKlubModel.Store.Location" Multiplicity="*" />
+          <End Role="Member" Type="HobbyKlubModel1.Store.Member" Multiplicity="1" />
+          <End Role="Location" Type="HobbyKlubModel1.Store.Location" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Member">
               <PropertyRef Name="MemberId" />
@@ -128,52 +108,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Location_Tool">
-          <End Role="Tool" Type="HobbyKlubModel.Store.Tool" Multiplicity="1" />
-          <End Role="Location" Type="HobbyKlubModel.Store.Location" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tool">
-              <PropertyRef Name="ToolId" />
-            </Principal>
-            <Dependent Role="Location">
-              <PropertyRef Name="ToolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Part_Tool">
-          <End Role="Tool" Type="HobbyKlubModel.Store.Tool" Multiplicity="1" />
-          <End Role="Part" Type="HobbyKlubModel.Store.Part" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tool">
-              <PropertyRef Name="ToolId" />
-            </Principal>
-            <Dependent Role="Part">
-              <PropertyRef Name="ToolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HobbyKlubModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="HobbyKlub_Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Location" EntityType="HobbyKlubModel.Location" />
-          <EntitySet Name="Member" EntityType="HobbyKlubModel.Member" />
-          <EntitySet Name="Part" EntityType="HobbyKlubModel.Part" />
-          <EntitySet Name="sysdiagrams" EntityType="HobbyKlubModel.sysdiagrams" />
-          <EntitySet Name="Tool" EntityType="HobbyKlubModel.Tool" />
-          <AssociationSet Name="FK_Location_Member" Association="HobbyKlubModel.FK_Location_Member">
+      <Schema Namespace="HobbyKlubModel1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="HobbyKlubEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Location" EntityType="HobbyKlubModel1.Location" />
+          <EntitySet Name="Member" EntityType="HobbyKlubModel1.Member" />
+          <EntitySet Name="Part" EntityType="HobbyKlubModel1.Part" />
+          <EntitySet Name="sysdiagrams" EntityType="HobbyKlubModel1.sysdiagrams" />
+          <EntitySet Name="Tool" EntityType="HobbyKlubModel1.Tool" />
+          <AssociationSet Name="FK_Location_Member" Association="HobbyKlubModel1.FK_Location_Member">
             <End Role="Member" EntitySet="Member" />
             <End Role="Location" EntitySet="Location" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Location_Tool" Association="HobbyKlubModel.FK_Location_Tool">
-            <End Role="Tool" EntitySet="Tool" />
-            <End Role="Location" EntitySet="Location" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Part_Tool" Association="HobbyKlubModel.FK_Part_Tool">
-            <End Role="Tool" EntitySet="Tool" />
-            <End Role="Part" EntitySet="Part" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Location">
@@ -182,12 +130,11 @@
           </Key>
           <Property Name="MemberId" Type="Int32" Nullable="false" />
           <Property Name="ToolId" Type="Int32" Nullable="false" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="LocID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Member" Relationship="HobbyKlubModel.FK_Location_Member" FromRole="Location" ToRole="Member" />
-          <NavigationProperty Name="Tool" Relationship="HobbyKlubModel.FK_Location_Tool" FromRole="Location" ToRole="Tool" />
+          <NavigationProperty Name="Member" Relationship="HobbyKlubModel1.FK_Location_Member" FromRole="Location" ToRole="Member" />
         </EntityType>
         <EntityType Name="Member">
           <Key>
@@ -201,28 +148,25 @@
           <Property Name="LoenNumber" Type="Int32" />
           <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Zip" Type="Int32" />
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="PhoneWork" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="PhoneHome" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Email2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Permissions" Type="Int32" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Permissions" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
           <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Location" Relationship="HobbyKlubModel.FK_Location_Member" FromRole="Member" ToRole="Location" />
+          <NavigationProperty Name="Location" Relationship="HobbyKlubModel1.FK_Location_Member" FromRole="Member" ToRole="Location" />
         </EntityType>
         <EntityType Name="Part">
           <Key>
-            <PropertyRef Name="ToolId" />
-            <PropertyRef Name="PartNo" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="Active" />
+            <PropertyRef Name="PartID" />
           </Key>
           <Property Name="ToolId" Type="Int32" Nullable="false" />
           <Property Name="PartNo" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Tool" Relationship="HobbyKlubModel.FK_Part_Tool" FromRole="Part" ToRole="Tool" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="PartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -240,22 +184,20 @@
           <Key>
             <PropertyRef Name="ToolId" />
           </Key>
-          <Property Name="ToolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToolId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Link" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="K_number" Type="Int32" Nullable="false" />
-          <Property Name="Art" Type="Int32" Nullable="false" />
+          <Property Name="Art" Type="Int32" />
           <Property Name="Price" Type="Int32" />
           <Property Name="Value" Type="Int32" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Location" Relationship="HobbyKlubModel.FK_Location_Tool" FromRole="Tool" ToRole="Location" />
-          <NavigationProperty Name="Part" Relationship="HobbyKlubModel.FK_Part_Tool" FromRole="Tool" ToRole="Part" />
         </EntityType>
         <Association Name="FK_Location_Member">
-          <End Role="Member" Type="HobbyKlubModel.Member" Multiplicity="1" />
-          <End Role="Location" Type="HobbyKlubModel.Location" Multiplicity="*" />
+          <End Role="Member" Type="HobbyKlubModel1.Member" Multiplicity="1" />
+          <End Role="Location" Type="HobbyKlubModel1.Location" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Member">
               <PropertyRef Name="MemberId" />
@@ -265,38 +207,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Location_Tool">
-          <End Role="Tool" Type="HobbyKlubModel.Tool" Multiplicity="1" />
-          <End Role="Location" Type="HobbyKlubModel.Location" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tool">
-              <PropertyRef Name="ToolId" />
-            </Principal>
-            <Dependent Role="Location">
-              <PropertyRef Name="ToolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Part_Tool">
-          <End Role="Tool" Type="HobbyKlubModel.Tool" Multiplicity="1" />
-          <End Role="Part" Type="HobbyKlubModel.Part" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tool">
-              <PropertyRef Name="ToolId" />
-            </Principal>
-            <Dependent Role="Part">
-              <PropertyRef Name="ToolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HobbyKlubModelStoreContainer" CdmEntityContainer="HobbyKlub_Entities">
+        <EntityContainerMapping StorageEntityContainer="HobbyKlubModel1StoreContainer" CdmEntityContainer="HobbyKlubEntities1">
           <EntitySetMapping Name="Location">
-            <EntityTypeMapping TypeName="HobbyKlubModel.Location">
+            <EntityTypeMapping TypeName="HobbyKlubModel1.Location">
               <MappingFragment StoreEntitySet="Location">
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="ToolId" ColumnName="ToolId" />
@@ -308,7 +226,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Member">
-            <EntityTypeMapping TypeName="HobbyKlubModel.Member">
+            <EntityTypeMapping TypeName="HobbyKlubModel1.Member">
               <MappingFragment StoreEntitySet="Member">
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -330,17 +248,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Part">
-            <EntityTypeMapping TypeName="HobbyKlubModel.Part">
+            <EntityTypeMapping TypeName="HobbyKlubModel1.Part">
               <MappingFragment StoreEntitySet="Part">
                 <ScalarProperty Name="ToolId" ColumnName="ToolId" />
                 <ScalarProperty Name="PartNo" ColumnName="PartNo" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="PartID" ColumnName="PartID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="HobbyKlubModel.sysdiagrams">
+            <EntityTypeMapping TypeName="HobbyKlubModel1.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -351,7 +270,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tool">
-            <EntityTypeMapping TypeName="HobbyKlubModel.Tool">
+            <EntityTypeMapping TypeName="HobbyKlubModel1.Tool">
               <MappingFragment StoreEntitySet="Tool">
                 <ScalarProperty Name="ToolId" ColumnName="ToolId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -382,34 +301,19 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="HobbyKlub">
-        <EntityTypeShape EntityType="HobbyKlubModel.Location" Width="1.5" PointX="3" PointY="2.5" Height="2.5571907552083335" IsExpanded="true" />
-        <EntityTypeShape EntityType="HobbyKlubModel.Member" Width="1.5" PointX="0.75" PointY="6.625" Height="4.2879036458333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="HobbyKlubModel.Part" Width="1.5" PointX="3" PointY="6" Height="1.9802864583333344" IsExpanded="true" />
-        <EntityTypeShape EntityType="HobbyKlubModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="HobbyKlubModel.Tool" Width="1.5" PointX="0.75" PointY="2.125" Height="3.3263964843749996" IsExpanded="true" />
-        <AssociationConnector Association="HobbyKlubModel.FK_Location_Member" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="6.625" />
-          <ConnectorPoint PointX="2.625" PointY="6.25" />
-          <ConnectorPoint PointX="2.625" PointY="3.7785953776041667" />
-          <ConnectorPoint PointX="3" PointY="3.7785953776041667" />
-        </AssociationConnector>
-        <AssociationConnector Association="HobbyKlubModel.FK_Location_Tool" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="3.0767976888020834" />
-          <ConnectorPoint PointX="3" PointY="3.0767976888020834" />
-        </AssociationConnector>
-        <AssociationConnector Association="HobbyKlubModel.FK_Part_Tool" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="5.3890877920673068" />
-          <ConnectorPoint PointX="2.5660744349011213" PointY="5.7051622269684277" />
-          <ConnectorPoint PointX="2.6839255650988791" PointY="5.823013357166186" />
-          <ConnectorPoint PointX="2.8125" PointY="5.9515877920673068" />
-          <ConnectorPoint PointX="2.8125" PointY="5.8125" />
-          <ConnectorPoint PointX="3" PointY="6" />
+      <Diagram Name="Model2">
+        <EntityTypeShape EntityType="HobbyKlubModel1.Location" Width="1.5" PointX="3" PointY="2" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel1.Member" Width="1.5" PointX="0.75" PointY="1" Height="4.2879036458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel1.Part" Width="1.5" PointX="5.75" PointY="0.75" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel1.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="HobbyKlubModel1.Tool" Width="1.5" PointX="5.75" PointY="3.75" Height="2.9417936197916656" IsExpanded="true" />
+        <AssociationConnector Association="HobbyKlubModel1.FK_Location_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.1824446614583337" />
+          <ConnectorPoint PointX="3" PointY="3.1824446614583337" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -11,9 +11,17 @@ using System.Diagnostics;
 
 namespace HobbyKlub
 {
+    public enum Status
+    {
+        Hjem = 0,
+        Reserveret = 1,
+        Udlejet = 2,
+        Afleveret = 3,
+        TilReparation = 4
+    }
+
     public partial class SelectForm : Form
     {
-        private DataSet MyLocations;
 
         public SelectForm()
         {
@@ -77,19 +85,31 @@ namespace HobbyKlub
         private void button2_Click(object sender, EventArgs e)
         {
             Reservation MyDialog = new Reservation(memberDropDown1.SelectedMember);
-            MyDialog.ShowDialog();
+            if (MyDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                ShowReservations();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Udlejning MyDialog = new Udlejning(memberDropDown1.SelectedMember);
-            MyDialog.ShowDialog();
+            Tool SelectedTool = null;
+            if (SelectedReservation != null)
+                SelectedTool = SelectedReservation.Tool;
+            Udlejning MyDialog = new Udlejning(memberDropDown1.SelectedMember, SelectedTool);
+            if (MyDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ShowReservations();
+                ShowUdlejninger();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Retur MyDialog = new Retur(memberDropDown1.SelectedMember);
-            MyDialog.ShowDialog();
+            Tool SelectedTool = null;
+            if (SelectedUdlejning != null)
+                SelectedTool = SelectedUdlejning.Tool;
+            Retur MyDialog = new Retur(memberDropDown1.SelectedMember, SelectedTool);
+            if (MyDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                ShowUdlejninger();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -100,42 +120,87 @@ namespace HobbyKlub
 
         private void memberDropDown1_OnMemberSelected_1(Member obj)
         {
-            LoadLocations();
             button2.Enabled = true;
             button3.Enabled = true;
             button4.Enabled = true;
+            ShowReservations();
+            ShowUdlejninger();
         }
 
+        List<Location> reservationList;
 
-
-        private void LoadLocations()
+        private void ShowReservations()
         {
-            List<Location> locationList;
 
-            using (var db = new HobbyKlub_Entities())
+            using (var db = new HobbyKlubEntities1())
             {
                 if (memberDropDown1.SelectedMember != null)
                 {
-                    var rv = db.Location.Where(x => x.MemberId == memberDropDown1.SelectedMember.MemberId);
+                    var rv = db.Location.Where(x => x.MemberId == memberDropDown1.SelectedMember.MemberId && x.Status == 1);
                     //available.TraceQuery();
-                    locationList = rv.ToList();
+                    reservationList = rv.ToList();
                 }
                 else
                 {
-                    var rv = db.Location.Where(x => x.MemberId > 0);
+                    var rv = db.Location.Where(x => x.MemberId > 0 && x.Status == 1);
                     //available.TraceQuery();
-                    locationList = rv.ToList();
+                    reservationList = rv.ToList();
                 }
-
                 listBox1.Items.Clear();
-                listBox1.Items.AddRange(locationList.Select(x => x.LocID.ToString() + "\t" + x.StartDate.ToString() + "\t" + x.Tool.Name + "\t" + x.Member.Name).ToArray());
-            }            
-
-
+                listBox1.Items.AddRange(reservationList.Select(x => x.StartDate.ToShortDateString() + " ... " + x.EndDate.ToString().Substring(0, 8) + "\t" + x.Tool.Name + " K" + x.Tool.K_number.ToString() + "\t" + x.Member.Name).ToArray());
+            }
         }
+
+        public Location SelectedReservation
+        {
+            get
+            {
+                if (listBox1.SelectedIndex >= 0)
+                    return reservationList[listBox1.SelectedIndex];
+                else
+                    return null;
+            }
+        }
+
+        List<Location> udlejningsList;
+
+        private void ShowUdlejninger()
+        {
+            using (var db = new HobbyKlubEntities1())
+            {
+
+                if (memberDropDown1.SelectedMember != null)
+                {
+                    var rv = db.Location.Where(x => x.MemberId == memberDropDown1.SelectedMember.MemberId && x.Status == 2);
+                    //available.TraceQuery();
+                    udlejningsList = rv.ToList();
+                }
+                else
+                {
+                    var rv = db.Location.Where(x => x.MemberId > 0 && x.Status == 2);
+                    //available.TraceQuery();
+                    udlejningsList = rv.ToList();
+                }
+                listBox2.Items.Clear();
+                listBox2.Items.AddRange(udlejningsList.Select(x => x.StartDate.ToShortDateString() + " ... " + x.EndDate.ToString().Substring(0, 8) + "\t" + x.Tool.Name + " K" + x.Tool.K_number.ToString() + "\t" + x.Member.Name).ToArray());
+            }            
+        }
+
+        public Location SelectedUdlejning
+        {
+            get
+            {
+                if (listBox2.SelectedIndex >= 0)
+                    return udlejningsList[listBox2.SelectedIndex];
+                else
+                    return null;
+            }
+        }
+
         private void SelectForm_Load(object sender, EventArgs e)
         {
-            LoadLocations();
+            ShowReservations();
+            ShowUdlejninger();
         }
 
     }

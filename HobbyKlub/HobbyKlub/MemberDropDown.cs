@@ -27,7 +27,7 @@ namespace HobbyKlub
         {
             if (DesignMode) return;
 
-            using (var hk = new HobbyKlub_Entities())
+            using (var hk = new HobbyKlubEntities1())
             {
                 members = hk.Member.ToList();
             }

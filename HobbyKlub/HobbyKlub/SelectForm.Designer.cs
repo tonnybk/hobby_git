@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.editButton = new System.Windows.Forms.Button();
             this.addNewButton = new System.Windows.Forms.Button();
@@ -46,13 +45,14 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.memberDropDown1 = new HobbyKlub.MemberDropDown();
             this.toolCombo = new HobbyKlub.Tools();
             this.memberComboBox = new HobbyKlub.MemberDropDown();
-            this.locationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.locationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -126,7 +126,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(19, 108);
+            this.button2.Location = new System.Drawing.Point(19, 71);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 32);
             this.button2.TabIndex = 9;
@@ -137,7 +137,7 @@
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(19, 161);
+            this.button3.Location = new System.Drawing.Point(19, 113);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(117, 32);
             this.button3.TabIndex = 10;
@@ -148,7 +148,7 @@
             // button4
             // 
             this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(19, 211);
+            this.button4.Location = new System.Drawing.Point(19, 241);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(117, 32);
             this.button4.TabIndex = 11;
@@ -179,11 +179,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 39);
+            this.label2.Location = new System.Drawing.Point(153, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.Size = new System.Drawing.Size(123, 13);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Kunde i butikken:";
+            this.label2.Text = "Select Kunde i butikken:";
             // 
             // statusStrip1
             // 
@@ -206,9 +206,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(153, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.Size = new System.Drawing.Size(156, 13);
             this.label4.TabIndex = 20;
-            this.label4.Text = "Locations:";
+            this.label4.Text = "Select Reserveret for at leje ud:";
             // 
             // button7
             // 
@@ -219,11 +219,19 @@
             this.button7.Text = "Administrator";
             this.button7.UseVisualStyleBackColor = true;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(156, 110);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(503, 95);
+            this.listBox1.TabIndex = 23;
+            // 
             // memberDropDown1
             // 
-            this.memberDropDown1.Location = new System.Drawing.Point(156, 55);
+            this.memberDropDown1.Location = new System.Drawing.Point(156, 36);
             this.memberDropDown1.Name = "memberDropDown1";
-            this.memberDropDown1.Size = new System.Drawing.Size(201, 21);
+            this.memberDropDown1.Size = new System.Drawing.Size(266, 21);
             this.memberDropDown1.TabIndex = 16;
             this.memberDropDown1.OnMemberSelected += new System.Action<HobbyKlub.Member>(this.memberDropDown1_OnMemberSelected_1);
             // 
@@ -242,17 +250,31 @@
             this.memberComboBox.TabIndex = 3;
             this.memberComboBox.OnMemberSelected += new System.Action<HobbyKlub.Member>(this.memberDropDown1_OnMemberSelected);
             // 
-            // locationBindingSource
+            // listBox2
             // 
-            this.locationBindingSource.DataSource = typeof(HobbyKlub.Location);
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(156, 241);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(503, 147);
+            this.listBox2.TabIndex = 24;
             // 
-            // listBox1
+            // label3
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(156, 110);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(503, 199);
-            this.listBox1.TabIndex = 23;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(153, 221);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(148, 13);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Select Udlejet for at returnere:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(671, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(132, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Ikke implementeret endnu:";
             // 
             // SelectForm
             // 
@@ -260,6 +282,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 430);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label4);
@@ -285,7 +310,6 @@
             this.Load += new System.EventHandler(this.SelectForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.locationBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,8 +337,10 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.BindingSource locationBindingSource;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
 
 
     }

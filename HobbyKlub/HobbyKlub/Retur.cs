@@ -14,6 +14,7 @@ namespace HobbyKlub
         public Retur(Member ActualMember, Tool ActualTool)
         {
             InitializeComponent();
+            dateTimePicker1.Value = DateTime.Now; 
             this.MyMember = ActualMember;
             textBox1.Text = MyMember.Name;
             this.MyTool = ActualTool;

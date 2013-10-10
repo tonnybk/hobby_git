@@ -35,7 +35,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -104,14 +103,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(419, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(203, 37);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "(Viser kun de udlejede værktøjer fra den aktuelle kunde)";
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(168, 62);
@@ -140,6 +131,7 @@
             // 
             // tools1
             // 
+            this.tools1.Enabled = false;
             this.tools1.Location = new System.Drawing.Point(170, 110);
             this.tools1.Name = "tools1";
             this.tools1.Size = new System.Drawing.Size(243, 22);
@@ -154,7 +146,6 @@
             this.Controls.Add(this.tools1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
@@ -180,7 +171,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

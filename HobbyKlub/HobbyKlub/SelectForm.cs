@@ -13,11 +13,10 @@ namespace HobbyKlub
 {
     public enum Status
     {
-        Hjem = 0,
+        Afleveret = 0,
         Reserveret = 1,
         Udlejet = 2,
-        Afleveret = 3,
-        TilReparation = 4
+        TilReparation = 3
     }
 
     public partial class SelectForm : Form
@@ -91,10 +90,10 @@ namespace HobbyKlub
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Tool SelectedTool = null;
-            if (SelectedReservation != null)
-                SelectedTool = SelectedReservation.Tool;
-            Udlejning MyDialog = new Udlejning(memberDropDown1.SelectedMember, SelectedTool);
+            //Tool SelectedTool = null;
+            //if (SelectedReservation != null)
+            //    SelectedTool = SelectedReservation.Tool;
+            Udlejning MyDialog = new Udlejning(memberDropDown1.SelectedMember, SelectedReservation);
             if (MyDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 ShowReservations();
@@ -136,18 +135,20 @@ namespace HobbyKlub
             {
                 if (memberDropDown1.SelectedMember != null)
                 {
-                    var rv = db.Location.Where(x => x.MemberId == memberDropDown1.SelectedMember.MemberId && x.Status == 1);
+                    var rv = db.Location.Where(x => x.MemberId == memberDropDown1.SelectedMember.MemberId && x.Status == (int)Status.Reserveret).OrderBy(x => x.StartDate);
                     //available.TraceQuery();
                     reservationList = rv.ToList();
+                    listBox1.Items.Clear();
+                    listBox1.Items.AddRange(reservationList.Select(x => x.StartDate.ToShortDateString() + " ... " + x.EndDate.ToString().Substring(0, 8) + "\t" + x.Tool.Name + " K" + x.Tool.K_number.ToString()).ToArray());
                 }
                 else
                 {
-                    var rv = db.Location.Where(x => x.MemberId > 0 && x.Status == 1);
+                    var rv = db.Location.Where(x => x.MemberId > 0 && x.Status == (int)Status.Reserveret).OrderBy(x => x.StartDate);
                     //available.TraceQuery();
                     reservationList = rv.ToList();
+                    listBox1.Items.Clear();
+                    listBox1.Items.AddRange(reservationList.Select(x => x.StartDate.ToShortDateString() + " ... " + x.EndDate.ToString().Substring(0, 8) + "\t" + x.Tool.Name + " K" + x.Tool.K_number.ToString() + "\t" + x.Member.Name).ToArray());
                 }
-                listBox1.Items.Clear();
-                listBox1.Items.AddRange(reservationList.Select(x => x.StartDate.ToShortDateString() + " ... " + x.EndDate.ToString().Substring(0, 8) + "\t" + x.Tool.Name + " K" + x.Tool.K_number.ToString() + "\t" + x.Member.Name).ToArray());
             }
         }
 
@@ -171,18 +172,20 @@ namespace HobbyKlub
 
                 if (memberDropDown1.SelectedMember != null)
                 {
-                    var rv = db.Location.Where(x => x.MemberId == memberDropDown1.SelectedMember.MemberId && x.Status == 2);
+                    var rv = db.Location.Where(x => x.MemberId == memberDropDown1.SelectedMember.MemberId && x.Status == (int)Status.Udlejet).OrderBy(x => x.StartDate);
                     //available.TraceQuery();
                     udlejningsList = rv.ToList();
+                    listBox2.Items.Clear();
+                    listBox2.Items.AddRange(udlejningsList.Select(x => x.StartDate.ToShortDateString() + " ... " + x.EndDate.ToString().Substring(0, 8) + "\t" + x.Tool.Name + " K" + x.Tool.K_number.ToString()).ToArray());
                 }
                 else
                 {
-                    var rv = db.Location.Where(x => x.MemberId > 0 && x.Status == 2);
+                    var rv = db.Location.Where(x => x.MemberId > 0 && x.Status == (int)Status.Udlejet).OrderBy(x => x.StartDate);
                     //available.TraceQuery();
                     udlejningsList = rv.ToList();
+                    listBox2.Items.Clear();
+                    listBox2.Items.AddRange(udlejningsList.Select(x => x.StartDate.ToShortDateString() + " ... " + x.EndDate.ToString().Substring(0, 8) + "\t" + x.Tool.Name + " K" + x.Tool.K_number.ToString() + "\t" + x.Member.Name).ToArray());
                 }
-                listBox2.Items.Clear();
-                listBox2.Items.AddRange(udlejningsList.Select(x => x.StartDate.ToShortDateString() + " ... " + x.EndDate.ToString().Substring(0, 8) + "\t" + x.Tool.Name + " K" + x.Tool.K_number.ToString() + "\t" + x.Member.Name).ToArray());
             }            
         }
 

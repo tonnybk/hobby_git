@@ -214,12 +214,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="History.txt" />
-    <Content Include="HobbyKlub.mdf">
+    <Content Include="HobbyKlub_Data.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HobbyKlub_log.ldf">
+    <Content Include="HobbyKlub_Data_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>HobbyKlub.mdf</DependentUpon>
+      <DependentUpon>HobbyKlub_Data.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

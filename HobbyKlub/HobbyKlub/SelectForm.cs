@@ -29,7 +29,7 @@ namespace HobbyKlub
 
         private void addNewButton_Click(object sender, EventArgs e)
         {
-            using (var form = new MemberForm(null))
+            using (var form = new MemberForm((Member)null))
             {
                 form.ShowDialog();
                 memberComboBox.LoadData();

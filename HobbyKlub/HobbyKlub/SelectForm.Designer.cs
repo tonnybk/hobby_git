@@ -181,9 +181,10 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(153, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Vaelg medlem:";
+            this.label2.Text = "Vælg medlem:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // statusStrip1
             // 
@@ -198,7 +199,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(172, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(154, 17);
             this.toolStripStatusLabel1.Text = "Administrator som er logget på";
             // 
             // label4

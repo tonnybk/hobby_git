@@ -46,12 +46,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.memberDropDown1 = new HobbyKlub.MemberDropDown();
-            this.toolCombo = new HobbyKlub.Tools();
-            this.memberComboBox = new HobbyKlub.MemberDropDown();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.memberDropDown1 = new HobbyKlub.MemberDropDown();
+            this.toolCombo = new HobbyKlub.Tools();
+            this.memberComboBox = new HobbyKlub.MemberDropDown();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,7 +162,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(117, 32);
             this.button5.TabIndex = 12;
-            this.button5.Text = "Medlemer";
+            this.button5.Text = "Medlemmer";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -181,9 +181,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(153, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 13);
+            this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Select Kunde i butikken:";
+            this.label2.Text = "Vaelg medlem:";
             // 
             // statusStrip1
             // 
@@ -227,29 +227,6 @@
             this.listBox1.Size = new System.Drawing.Size(503, 95);
             this.listBox1.TabIndex = 23;
             // 
-            // memberDropDown1
-            // 
-            this.memberDropDown1.Location = new System.Drawing.Point(156, 36);
-            this.memberDropDown1.Name = "memberDropDown1";
-            this.memberDropDown1.Size = new System.Drawing.Size(266, 21);
-            this.memberDropDown1.TabIndex = 16;
-            this.memberDropDown1.OnMemberSelected += new System.Action<HobbyKlub.Member>(this.memberDropDown1_OnMemberSelected_1);
-            // 
-            // toolCombo
-            // 
-            this.toolCombo.Location = new System.Drawing.Point(900, 113);
-            this.toolCombo.Name = "toolCombo";
-            this.toolCombo.Size = new System.Drawing.Size(243, 22);
-            this.toolCombo.TabIndex = 6;
-            // 
-            // memberComboBox
-            // 
-            this.memberComboBox.Location = new System.Drawing.Point(906, 39);
-            this.memberComboBox.Name = "memberComboBox";
-            this.memberComboBox.Size = new System.Drawing.Size(238, 21);
-            this.memberComboBox.TabIndex = 3;
-            this.memberComboBox.OnMemberSelected += new System.Action<HobbyKlub.Member>(this.memberDropDown1_OnMemberSelected);
-            // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
@@ -275,6 +252,29 @@
             this.label5.Size = new System.Drawing.Size(132, 13);
             this.label5.TabIndex = 26;
             this.label5.Text = "Ikke implementeret endnu:";
+            // 
+            // memberDropDown1
+            // 
+            this.memberDropDown1.Location = new System.Drawing.Point(156, 36);
+            this.memberDropDown1.Name = "memberDropDown1";
+            this.memberDropDown1.Size = new System.Drawing.Size(266, 21);
+            this.memberDropDown1.TabIndex = 16;
+            this.memberDropDown1.OnMemberSelected += new System.Action<HobbyKlub.Member>(this.memberDropDown1_OnMemberSelected_1);
+            // 
+            // toolCombo
+            // 
+            this.toolCombo.Location = new System.Drawing.Point(900, 113);
+            this.toolCombo.Name = "toolCombo";
+            this.toolCombo.Size = new System.Drawing.Size(243, 22);
+            this.toolCombo.TabIndex = 6;
+            // 
+            // memberComboBox
+            // 
+            this.memberComboBox.Location = new System.Drawing.Point(906, 39);
+            this.memberComboBox.Name = "memberComboBox";
+            this.memberComboBox.Size = new System.Drawing.Size(238, 21);
+            this.memberComboBox.TabIndex = 3;
+            this.memberComboBox.OnMemberSelected += new System.Action<HobbyKlub.Member>(this.memberDropDown1_OnMemberSelected);
             // 
             // SelectForm
             // 
